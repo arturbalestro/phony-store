@@ -1,11 +1,6 @@
 import actionTypes from "../actions/types";
 
 //Exporting the actions to be used in the components
-export const addUser = (newUser) => ({
-  type: actionTypes.ADD_USER,
-  newUser,
-});
-
 export const getProducts = () => ({
   type: actionTypes.GET_PRODUCTS,
 });

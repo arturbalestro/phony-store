@@ -1,13 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Form, FormGroup, Label, Input, FormFeedback } from "reactstrap";
+import { Form, FormGroup, Label, Input } from "reactstrap";
 import { Formik } from "formik";
+import { locales } from "../../../utils/locales";
 
-import { addUser, getProducts } from "../../../actions";
+import { getProducts } from "../../../actions";
 import { StyledLogin } from "../../../styles/StyledLogin";
 import { StyledButton } from "../../../styles/StyledButton";
 
-const saveSession = (newUser) => {
+const addUser = (newUser) => {
   sessionStorage.setItem("userEmail", newUser.email);
   sessionStorage.setItem("userPassword", newUser.password);
 };
@@ -19,8 +20,8 @@ const Login = ({ addUser, getProducts, history }) => {
         initialValues={{ userName: "", password: "" }}
         validate={(values) => {
           const errors = {};
-          if (!values.userName) errors.userName = "Required";
-          if (!values.password) errors.password = "Required";
+          if (!values.userName) errors.userName = locales.requiredFormText;
+          if (!values.password) errors.password = locales.requiredFormText;
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
@@ -28,7 +29,7 @@ const Login = ({ addUser, getProducts, history }) => {
             name: values.userName,
             type: values.password,
           };
-          saveSession(newUser);
+          addUser(newUser);
           getProducts();
           setSubmitting(false);
           history.push("/products");
@@ -45,7 +46,7 @@ const Login = ({ addUser, getProducts, history }) => {
         }) => (
           <Form onSubmit={handleSubmit}>
             <FormGroup>
-              <Label for="userName">Username</Label>
+              <Label for="userName">{locales.userNameLabel}</Label>
               <Input
                 type="text"
                 name="userName"
@@ -54,12 +55,12 @@ const Login = ({ addUser, getProducts, history }) => {
                 onBlur={handleBlur}
                 value={values.userName}
               />
-              <FormFeedback>
-                {errors.userName && touched.userName && errors.userName}
-              </FormFeedback>
+              {errors.userName && touched.userName && (
+                <div className="error-feedback">{errors.userName}</div>
+              )}
             </FormGroup>
             <FormGroup>
-              <Label for="password">Password</Label>
+              <Label for="password">{locales.passwordLabel}</Label>
               <Input
                 type="password"
                 name="password"
@@ -68,13 +69,13 @@ const Login = ({ addUser, getProducts, history }) => {
                 onBlur={handleBlur}
                 value={values.password}
               />
-              <FormFeedback>
-                {errors.password && touched.password && errors.password}
-              </FormFeedback>
+              {errors.password && touched.password && (
+                <div className="error-feedback">{errors.password}</div>
+              )}
             </FormGroup>
             <FormGroup className="text-right">
               <StyledButton type="submit" disabled={isSubmitting}>
-                LOGIN
+                {locales.loginButtonText}
               </StyledButton>
             </FormGroup>
           </Form>

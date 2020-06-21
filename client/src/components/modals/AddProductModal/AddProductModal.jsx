@@ -8,11 +8,11 @@ import {
   FormGroup,
   Label,
   Input,
-  FormFeedback,
 } from "reactstrap";
 import { Formik } from "formik";
 import NumberFormat from "react-number-format";
 import { formatToDecimal } from "../../../utils/formatCurrency";
+import { locales } from "../../../utils/locales";
 
 import { addProduct } from "../../../actions";
 import { StyledButton } from "../../../styles/StyledButton";
@@ -21,7 +21,7 @@ export const AddProductModal = ({ isOpen, toggle, addProduct }) => {
   return (
     <div>
       <Modal isOpen={isOpen} toggle={toggle}>
-        <ModalHeader toggle={toggle}>ADD A PRODUCT TO THE CATALOG</ModalHeader>
+        <ModalHeader toggle={toggle}>{locales.addProductTitle}</ModalHeader>
         <ModalBody>
           <Formik
             initialValues={{
@@ -31,9 +31,12 @@ export const AddProductModal = ({ isOpen, toggle, addProduct }) => {
             }}
             validate={(values) => {
               const errors = {};
-              if (!values.productName) errors.productName = "Required";
-              if (!values.productPrice) errors.productPrice = "Required";
-              if (!values.productQuantity) errors.productQuantity = "Required";
+              if (!values.productName)
+                errors.productName = locales.requiredFormText;
+              if (!values.productPrice)
+                errors.productPrice = locales.requiredFormText;
+              if (!values.productQuantity)
+                errors.productQuantity = locales.requiredFormText;
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
@@ -60,7 +63,7 @@ export const AddProductModal = ({ isOpen, toggle, addProduct }) => {
             }) => (
               <Form onSubmit={handleSubmit}>
                 <FormGroup>
-                  <Label for="productName">Product Name</Label>
+                  <Label for="productName">{locales.productNameLabel}</Label>
                   <Input
                     type="text"
                     name="productName"
@@ -69,14 +72,12 @@ export const AddProductModal = ({ isOpen, toggle, addProduct }) => {
                     onBlur={handleBlur}
                     value={values.productName}
                   />
-                  <FormFeedback>
-                    {errors.productName &&
-                      touched.productName &&
-                      errors.productName}
-                  </FormFeedback>
+                  {errors.productName && touched.productName && (
+                    <div className="error-feedback">{errors.productName}</div>
+                  )}
                 </FormGroup>
                 <FormGroup>
-                  <Label for="productPrice">Product Price</Label>
+                  <Label for="productPrice">{locales.productPriceLabel}</Label>
                   <NumberFormat
                     className="form-control"
                     name="productPrice"
@@ -90,14 +91,14 @@ export const AddProductModal = ({ isOpen, toggle, addProduct }) => {
                       <span>{formattedPrice}</span>
                     )}
                   />
-                  <FormFeedback>
-                    {errors.productPrice &&
-                      touched.productPrice &&
-                      errors.productPrice}
-                  </FormFeedback>
+                  {errors.productPrice && touched.productPrice && (
+                    <div className="error-feedback">{errors.productPrice}</div>
+                  )}
                 </FormGroup>
                 <FormGroup>
-                  <Label for="productQuantity">Product Quantity</Label>
+                  <Label for="productQuantity">
+                    {locales.productQuantityLabel}
+                  </Label>
                   <div>
                     <Input
                       type="number"
@@ -107,16 +108,16 @@ export const AddProductModal = ({ isOpen, toggle, addProduct }) => {
                       onBlur={handleBlur}
                       value={values.productQuantity}
                     />
-                    <FormFeedback>
-                      {errors.productQuantity &&
-                        touched.productQuantity &&
-                        errors.productQuantity}
-                    </FormFeedback>
+                    {errors.productQuantity && touched.productQuantity && (
+                      <div className="error-feedback">
+                        {errors.productQuantity}
+                      </div>
+                    )}
                   </div>
                 </FormGroup>
                 <FormGroup className="text-right">
                   <StyledButton type="submit" disabled={isSubmitting}>
-                    Add
+                    {locales.addButtonText}
                   </StyledButton>
                 </FormGroup>
               </Form>

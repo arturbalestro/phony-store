@@ -8,15 +8,13 @@ import { StyledButton } from "../../../styles/StyledButton";
 import AddProductModal from "../../modals/AddProductModal/AddProductModal";
 import Options from "../../atoms/Options/Options";
 import { getProducts } from "../../../actions";
+import { locales } from "../../../utils/locales";
+import { sortByPrice } from "../../../utils/sortProducts";
 
 let renderProducts = (products) => {
-  //Sorting products by alphabetical order
-  const sortedProducts = products.sort(
-    (a, b) =>
-      //a.valor < b.valor ? -1 : a.valor > b.valor ? 1 : 0
-      //TODO Add sort by price in utils
-      a.valor < b.valor
-  );
+  //Sorting by default products by highest price
+  //TODO Add new selectable sorts
+  const sortedProducts = sortByPrice(products, "desc");
 
   //Rendering the product list if the data is found
   return sortedProducts.map((product, index) => {
@@ -27,7 +25,7 @@ let renderProducts = (products) => {
         <div className="product-item">
           <h2>{nome}</h2>
           <p>
-            <b>Valor: </b>
+            <b>{locales.priceTitle}</b>
             <NumberFormat
               displayType={"text"}
               value={valor}
@@ -38,7 +36,8 @@ let renderProducts = (products) => {
           </p>
 
           <p>
-            <b>Quantidade:</b> {quantidade}
+            <b>{locales.quantityTitle}</b>
+            {quantidade}
           </p>
         </div>
         <Options product={product} />
@@ -62,9 +61,9 @@ export const ProductList = ({ products, getProducts }) => {
         <StyledButton
           className="add-button"
           onClick={toggleAddModal}
-          title="ADD"
+          title={locales.addProductButtonTitle}
         >
-          ADD A NEW PRODUCT
+          {locales.addProductButtonTitle}
         </StyledButton>
         <AddProductModal isOpen={addModal} toggle={toggleAddModal} />
       </StyledProductList>

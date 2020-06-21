@@ -3,20 +3,6 @@ import actionTypes from "../actions/types";
 import axios from "axios";
 
 const productsAPI = "https://desafio-apirest-produtos.herokuapp.com/api/";
-const usersAPI = "https://dragalia-59d52.firebaseio.com/users";
-
-function* addUser(action) {
-  try {
-    const addedUser = yield axios
-      .post(usersAPI, action.newUser)
-      .then((response) => response.data);
-
-    //when the data is received, return the action result;
-    yield put({ type: actionTypes.USER_ADDED, addedUser });
-  } catch (error) {
-    yield put({ type: actionTypes.ADD_USER_FAILED, error });
-  }
-}
 
 //Generator function to fetch data from the API and send the result to the PRODUCTS_RECEIVED action.
 function* fetchProducts() {
@@ -77,7 +63,6 @@ function* deleteProduct(action) {
 
 //Generator function to wait for the GET_PRODUCTS to finish before triggering the other action.
 function* actionWatcher() {
-  yield takeLatest(actionTypes.ADD_USER, addUser);
   yield takeLatest(actionTypes.GET_PRODUCTS, fetchProducts);
   yield takeLatest(actionTypes.ADD_PRODUCT, addProduct);
   yield takeLatest(actionTypes.EDIT_PRODUCT, editProduct);

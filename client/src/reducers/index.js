@@ -7,17 +7,6 @@ const reducer = (state, action) => {
     return 0;
   }
 
-  if (action.type === actionTypes.ADD_USER) {
-    return { ...state, loading: true, newUser: action.newUser };
-  } else if (action.type === actionTypes.USER_ADDED) {
-    //Updating state without modifying the original object
-    const updatedState = update(state.users, { $push: [action.addedUser] });
-
-    return { ...state, users: updatedState, loading: false };
-  } else if (action.type === actionTypes.ADD_USER_FAILED) {
-    return { ...state, loading: false };
-  }
-
   //Updating state with the actions
   if (action.type === actionTypes.GET_PRODUCTS) {
     return { ...state, loading: true };
@@ -30,11 +19,7 @@ const reducer = (state, action) => {
   if (action.type === actionTypes.ADD_PRODUCT) {
     return { ...state, loading: true, newProduct: action.newProduct };
   } else if (action.type === actionTypes.PRODUCT_ADDED) {
-    //Updating state without modifying the original object
-    // const updatedState = update(state.products, {
-    //   $push: [action.addedProduct],
-    // });
-
+    //TODO Call a modal with this info
     alert(action.addedProduct);
 
     return { ...state, products: state.products, loading: false };

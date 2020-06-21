@@ -4,6 +4,7 @@ import { deleteProduct } from "../../../actions";
 import { StyledOptions } from "../../../styles/StyledOptions";
 import { StyledButton } from "../../../styles/StyledButton";
 import EditProductModal from "../../modals/EditProductModal/EditProductModal";
+import { locales } from "../../../utils/locales";
 
 //Button to call the action.
 export const Options = (props) => {
@@ -17,9 +18,9 @@ export const Options = (props) => {
         <StyledButton
           className="options"
           onClick={toggleEditModal}
-          title="EDIT"
+          title={locales.editButtonText}
         >
-          EDIT
+          {locales.editButtonText}
         </StyledButton>
         <EditProductModal
           isOpen={editModal}
@@ -30,9 +31,9 @@ export const Options = (props) => {
         <StyledButton
           className="options"
           onClick={() => deleteProduct(product.id)}
-          title="DELETE"
+          title={locales.deleteButtonText}
         >
-          DELETE
+          {locales.deleteButtonText}
         </StyledButton>
       </div>
     </StyledOptions>
