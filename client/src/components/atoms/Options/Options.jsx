@@ -31,7 +31,7 @@ export const Options = (props) => {
 
         <StyledButton
           className="options"
-          onClick={() => deleteProduct(product.id)}
+          onClick={() => deleteProduct(product)}
           title={locales.deleteButtonText}
         >
           <TrashIcon />

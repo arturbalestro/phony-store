@@ -39,22 +39,18 @@ let renderProducts = (products) => {
                 <h4>{nome}</h4>
               </CardTitle>
               <CardText>
-                <p>
-                  <strong>{locales.priceTitle}</strong>
-                  <NumberFormat
-                    displayType={"text"}
-                    value={valor}
-                    thousandSeparator={true}
-                    prefix={"R$ "}
-                    renderText={(formattedPrice) => (
-                      <span>{formattedPrice}</span>
-                    )}
-                  />
-                </p>
-                <p>
-                  <strong>{locales.quantityTitle}</strong>
-                  {quantidade}
-                </p>
+                <strong>{locales.priceTitle}</strong>
+                <NumberFormat
+                  displayType={"text"}
+                  value={valor}
+                  thousandSeparator={true}
+                  prefix={"R$ "}
+                  renderText={(formattedPrice) => <span>{formattedPrice}</span>}
+                />
+              </CardText>
+              <CardText>
+                <strong>{locales.quantityTitle}</strong>
+                {quantidade}
               </CardText>
               <Options product={product} />
             </CardBody>

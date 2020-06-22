@@ -16,7 +16,7 @@ export const editProduct = (productId, newProduct) => ({
   newProduct,
 });
 
-export const deleteProduct = (productId) => ({
+export const deleteProduct = (product) => ({
   type: actionTypes.DELETE_PRODUCT,
-  productId,
+  product,
 });

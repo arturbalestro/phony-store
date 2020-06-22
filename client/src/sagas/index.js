@@ -51,7 +51,7 @@ function* editProduct(action) {
 function* deleteProduct(action) {
   try {
     const deletedProduct = yield axios
-      .delete(productsAPI + "produto", action.deletedProduct)
+      .delete(productsAPI + "produto", { data: action.product })
       .then((response) => response.data);
 
     //when the data is received, return the action result;

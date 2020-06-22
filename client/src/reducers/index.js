@@ -52,7 +52,7 @@ const reducer = (state, action) => {
   }
 
   if (action.type === actionTypes.DELETE_PRODUCT) {
-    return { ...state, loading: true, productId: action.productId };
+    return { ...state, loading: true, product: action.product };
   } else if (action.type === actionTypes.PRODUCT_DELETED) {
     //TODO Call a modal with this info
     alert(action.deletedProduct);
