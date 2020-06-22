@@ -5,6 +5,7 @@ import { StyledOptions } from "../../../styles/StyledOptions";
 import { StyledButton } from "../../../styles/StyledButton";
 import EditProductModal from "../../modals/EditProductModal/EditProductModal";
 import { locales } from "../../../utils/locales";
+import { PencilIcon, TrashIcon } from "@primer/octicons-react";
 
 //Button to call the action.
 export const Options = (props) => {
@@ -20,7 +21,7 @@ export const Options = (props) => {
           onClick={toggleEditModal}
           title={locales.editButtonText}
         >
-          {locales.editButtonText}
+          <PencilIcon />
         </StyledButton>
         <EditProductModal
           isOpen={editModal}
@@ -33,7 +34,7 @@ export const Options = (props) => {
           onClick={() => deleteProduct(product.id)}
           title={locales.deleteButtonText}
         >
-          {locales.deleteButtonText}
+          <TrashIcon />
         </StyledButton>
       </div>
     </StyledOptions>

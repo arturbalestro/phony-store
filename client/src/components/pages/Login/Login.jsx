@@ -13,7 +13,7 @@ const addUser = (newUser) => {
   sessionStorage.setItem("userPassword", newUser.password);
 };
 
-const Login = ({ addUser, getProducts, history }) => {
+const Login = ({ getProducts, history }) => {
   return (
     <StyledLogin>
       <Formik
@@ -26,8 +26,8 @@ const Login = ({ addUser, getProducts, history }) => {
         }}
         onSubmit={(values, { setSubmitting }) => {
           const newUser = {
-            name: values.userName,
-            type: values.password,
+            email: values.userName,
+            password: values.password,
           };
           addUser(newUser);
           getProducts();
@@ -87,7 +87,6 @@ const Login = ({ addUser, getProducts, history }) => {
 
 //Dispatching action to use as props
 const mapDispatchToProps = {
-  addUser,
   getProducts,
 };
 

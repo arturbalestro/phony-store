@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import NumberFormat from "react-number-format";
+import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
 
 import { StyledProductList } from "../../../styles/StyledProductList";
 import { StyledProductContainer } from "../../../styles/StyledProductContainer";
 import { StyledButton } from "../../../styles/StyledButton";
+
 import AddProductModal from "../../modals/AddProductModal/AddProductModal";
 import Options from "../../atoms/Options/Options";
+import placeHolderImg from "../../../img/product-placeholder.png";
+
 import { getProducts } from "../../../actions";
 import { locales } from "../../../utils/locales";
 import { sortByPrice } from "../../../utils/sortProducts";
@@ -23,24 +27,39 @@ let renderProducts = (products) => {
     return (
       <StyledProductContainer key={"product-" + index + "-" + id}>
         <div className="product-item">
-          <h2>{nome}</h2>
-          <p>
-            <b>{locales.priceTitle}</b>
-            <NumberFormat
-              displayType={"text"}
-              value={valor}
-              thousandSeparator={true}
-              prefix={"R$ "}
-              renderText={(formattedPrice) => <span>{formattedPrice}</span>}
+          <Card>
+            <CardImg
+              top
+              width="100%"
+              src={placeHolderImg}
+              alt="Card image cap"
             />
-          </p>
-
-          <p>
-            <b>{locales.quantityTitle}</b>
-            {quantidade}
-          </p>
+            <CardBody>
+              <CardTitle>
+                <h4>{nome}</h4>
+              </CardTitle>
+              <CardText>
+                <p>
+                  <strong>{locales.priceTitle}</strong>
+                  <NumberFormat
+                    displayType={"text"}
+                    value={valor}
+                    thousandSeparator={true}
+                    prefix={"R$ "}
+                    renderText={(formattedPrice) => (
+                      <span>{formattedPrice}</span>
+                    )}
+                  />
+                </p>
+                <p>
+                  <strong>{locales.quantityTitle}</strong>
+                  {quantidade}
+                </p>
+              </CardText>
+              <Options product={product} />
+            </CardBody>
+          </Card>
         </div>
-        <Options product={product} />
       </StyledProductContainer>
     );
   });

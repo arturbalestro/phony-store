@@ -43,6 +43,9 @@ const reducer = (state, action) => {
     const setProducts = update(state.products, { $set: updatedProducts });
     const updatedState = update(setProducts, { $push: [action.editedProduct] });
 
+    //TODO Call a modal with this info
+    alert(action.editedProduct);
+
     return { ...state, products: updatedState, loading: false };
   } else if (action.type === actionTypes.EDIT_PRODUCT_FAILED) {
     return { ...state, loading: false };
@@ -51,6 +54,8 @@ const reducer = (state, action) => {
   if (action.type === actionTypes.DELETE_PRODUCT) {
     return { ...state, loading: true, productId: action.productId };
   } else if (action.type === actionTypes.PRODUCT_DELETED) {
+    //TODO Call a modal with this info
+    alert(action.deletedProduct);
     return {
       ...state,
       products: state.products.filter(

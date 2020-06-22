@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const StyledProductContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
   width: 100%;
-  border-bottom: 3px solid olive;
+  border-bottom: 3px solid #ea464d;
   margin-bottom: 20px;
 
   &:last-child {
@@ -18,6 +19,14 @@ export const StyledProductContainer = styled.div`
     margin-bottom: 10px;
     min-width: 50%;
 
+    .card {
+      align-items: center;
+
+      img {
+        max-width: 50%;
+      }
+    }
+
     h2 {
       font-size: 1.5rem;
       font-weight: bold;
@@ -27,7 +36,7 @@ export const StyledProductContainer = styled.div`
       margin: 5px 0;
 
       b {
-        color: olive;
+        color: #ea464d;
       }
     }
   }

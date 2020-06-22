@@ -1,6 +1,6 @@
 export const locales = {
   mainTitle: "Welcome to Phony Store!",
-  mainSubTitle: "Find the best phone here",
+  mainSubTitle: "The best phones selected just for you",
   addProductTitle: "Add a product to the catalog",
   editProductTitle: "Update the product information",
   requiredFormText: "Required",
@@ -14,6 +14,10 @@ export const locales = {
   userNameLabel: "Username",
   passwordLabel: "Password",
   priceTitle: "Price: ",
-  quantityTitle: "Quantity: ",
+  quantityTitle: "Available quantity: ",
   addProductButtonTitle: "Add a new product",
+  welcomeText: "Welcome, ",
+  checkProductsButtonText: "Check our products",
+  logOutText: "Log out",
+  phonyStoreLogoText: "Phony Store Logo",
 };
