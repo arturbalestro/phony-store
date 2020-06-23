@@ -20,7 +20,7 @@ const reducer = (state, action) => {
   } else if (action.type === actionTypes.PRODUCT_ADDED) {
     const warningModalState = {
       modalOpen: true,
-      actionType: "Adding product",
+      actionType: "Adicionando produto",
       modalMessage: action.addedProduct,
     };
 
@@ -31,7 +31,17 @@ const reducer = (state, action) => {
       warningModal: warningModalState,
     };
   } else if (action.type === actionTypes.ADD_PRODUCT_FAILED) {
-    return { ...state, loading: false };
+    const warningModalState = {
+      modalOpen: true,
+      actionType: "Adicionando produto",
+      modalMessage: action.error.message,
+    };
+
+    return {
+      ...state,
+      loading: false,
+      warningModal: warningModalState,
+    };
   }
 
   if (action.type === actionTypes.EDIT_PRODUCT) {
@@ -44,7 +54,7 @@ const reducer = (state, action) => {
   } else if (action.type === actionTypes.PRODUCT_EDITED) {
     const warningModalState = {
       modalOpen: true,
-      actionType: "Editing product",
+      actionType: "Editando produto",
       modalMessage: action.editedProduct,
     };
 
@@ -55,7 +65,17 @@ const reducer = (state, action) => {
       warningModal: warningModalState,
     };
   } else if (action.type === actionTypes.EDIT_PRODUCT_FAILED) {
-    return { ...state, loading: false };
+    const warningModalState = {
+      modalOpen: true,
+      actionType: "Editando produto",
+      modalMessage: action.error.message,
+    };
+
+    return {
+      ...state,
+      loading: false,
+      warningModal: warningModalState,
+    };
   }
 
   if (action.type === actionTypes.DELETE_PRODUCT) {
@@ -63,7 +83,7 @@ const reducer = (state, action) => {
   } else if (action.type === actionTypes.PRODUCT_DELETED) {
     const warningModalState = {
       modalOpen: true,
-      actionType: "Deleting product",
+      actionType: "Deletando produto",
       modalMessage: action.deletedProduct,
     };
 
@@ -76,7 +96,17 @@ const reducer = (state, action) => {
       warningModal: warningModalState,
     };
   } else if (action.type === actionTypes.DELETE_PRODUCT_FAILED) {
-    return { ...state, loading: false };
+    const warningModalState = {
+      modalOpen: true,
+      actionType: "Deletando produto",
+      modalMessage: action.error.message,
+    };
+
+    return {
+      ...state,
+      loading: false,
+      warningModal: warningModalState,
+    };
   }
 
   return state;

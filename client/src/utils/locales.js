@@ -20,4 +20,5 @@ export const locales = {
   checkProductsButtonText: "Check our products",
   logOutText: "Log out",
   phonyStoreLogoText: "Phony Store Logo",
+  productsNotFoundText: "No products found",
 };

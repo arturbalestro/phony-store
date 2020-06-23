@@ -87,7 +87,7 @@ export const ProductList = ({ products, getProducts }) => {
     );
   }
 
-  return null;
+  return <p>{locales.productsNotFoundText}</p>;
 };
 
 //Mapping current list of products state to props
