@@ -14,10 +14,12 @@ export const locales = {
   userNameLabel: "Username",
   passwordLabel: "Password",
   priceTitle: "Price: ",
-  quantityTitle: "Available quantity: ",
+  quantityTitle: "Available: ",
   addProductButtonTitle: "Add a new product",
   welcomeText: "Welcome, ",
   checkProductsButtonText: "Check our products",
   logOutText: "Log out",
   phonyStoreLogoText: "Phony Store Logo",
+  sortByHighestPriceText: "Sort by Highest Price",
+  sortByLowestPriceText: "Sort by Lowest Price",
 };

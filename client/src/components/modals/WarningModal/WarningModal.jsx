@@ -43,7 +43,7 @@ export const WarningModal = ({ warningModal }) => {
   );
 };
 
-//Mapping loading state
+//Mapping warningModal state
 const mapStateToProps = (state) => ({ warningModal: state.warningModal });
 
 export default connect(mapStateToProps, null)(WarningModal);

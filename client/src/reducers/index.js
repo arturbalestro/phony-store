@@ -1,4 +1,5 @@
 import actionTypes from "../actions/types";
+import { sortByPrice } from "../utils/sortProducts";
 
 const reducer = (state, action) => {
   //Preventing lint error of state not previously declared
@@ -13,6 +14,26 @@ const reducer = (state, action) => {
     return { ...state, products: action.products, loading: false };
   } else if (action.type === actionTypes.GET_PRODUCTS_FAILED) {
     return { ...state, loading: false };
+  }
+
+  //Updating state with the actions
+  if (action.type === actionTypes.SORT_PRODUCTS) {
+    console.log("####I got the action, yay", action);
+    return { ...state, loading: true };
+  } else if (action.type === actionTypes.PRODUCTS_SORTED) {
+    console.log("####products have been sorted", action);
+    if (action.sortingType === "price") {
+      action.products = sortByPrice(action.products, action.sortingDirection);
+    }
+
+    return {
+      ...state,
+      products: action.products,
+      sortingType: action.sortingType,
+      sortingDirection: action.sortingDirection,
+    };
+  } else if (action.type === actionTypes.SORT_PRODUCTS_FAILED) {
+    return { ...state };
   }
 
   if (action.type === actionTypes.ADD_PRODUCT) {

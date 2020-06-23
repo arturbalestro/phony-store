@@ -18,6 +18,15 @@ function* fetchProducts() {
   }
 }
 
+function* sortProducts(action) {
+  try {
+    //when the data is received, return the action result;
+    yield put({ type: actionTypes.PRODUCTS_SORTED, action });
+  } catch (error) {
+    yield put({ type: actionTypes.SORT_PRODUCTS_FAILED, error });
+  }
+}
+
 function* addProduct(action) {
   try {
     const addedProduct = yield axios
@@ -64,6 +73,7 @@ function* deleteProduct(action) {
 //Generator function to wait for the GET_PRODUCTS to finish before triggering the other action.
 function* actionWatcher() {
   yield takeLatest(actionTypes.GET_PRODUCTS, fetchProducts);
+  yield takeLatest(actionTypes.SORT_PRODUCTS, sortProducts);
   yield takeLatest(actionTypes.ADD_PRODUCT, addProduct);
   yield takeLatest(actionTypes.EDIT_PRODUCT, editProduct);
   yield takeLatest(actionTypes.DELETE_PRODUCT, deleteProduct);

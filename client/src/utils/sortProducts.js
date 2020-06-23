@@ -11,13 +11,13 @@ export const sortByPrice = (products, order) => {
 };
 
 export const sortByName = (products, order) => {
-    //Sorting products by alphabetical order
-    const sortedProducts = products.sort((a, b) => {
-      if (order !== "desc") {
-        return a.name < b.name;
-      }
-  
-      return a.name > b.name;
-    });
-    return sortedProducts;
-  };
+  //Sorting products by alphabetical order
+  const sortedProducts = products.sort((a, b) => {
+    if (order !== "desc") {
+      return a.name < b.name;
+    }
+
+    return a.name > b.name;
+  });
+  return sortedProducts;
+};

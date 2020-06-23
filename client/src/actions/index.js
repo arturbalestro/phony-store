@@ -20,3 +20,13 @@ export const deleteProduct = (product) => ({
   type: actionTypes.DELETE_PRODUCT,
   product,
 });
+
+export const sortProducts = (products, sortingType, sortingDirection) => {
+  console.log("####action", products, sortingType, sortingDirection);
+  return {
+    type: actionTypes.SORT_PRODUCTS,
+    products,
+    sortingType,
+    sortingDirection,
+  };
+};

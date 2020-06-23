@@ -8,7 +8,7 @@ export const StyledButton = styled.button`
   border: none;
   color: white;
   background: #ea464d;
-  font-family: Pixel, Arial, Helvetica, sans-serif;
+  font-family: "Trebuchet MS", sans-serif;
   font-size: 1rem;
   outline: none;
   cursor: pointer;
@@ -21,10 +21,5 @@ export const StyledButton = styled.button`
     padding: 10px;
     font-size: 0.8rem;
     min-width: inherit;
-  }
-
-  &.add-button {
-    display: inline-block;
-    margin: auto;
   }
 `;

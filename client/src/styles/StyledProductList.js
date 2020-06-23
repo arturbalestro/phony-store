@@ -2,12 +2,19 @@ import styled from "styled-components";
 
 export const StyledProductList = styled.div`
   background: #fff;
-  border: 2px solid #EA464D;
+  border: 2px solid #ea464d;
   padding: 20px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  width: 80%;
   margin: 10px auto;
   color: #666;
+
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+  }
 `;

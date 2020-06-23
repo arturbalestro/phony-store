@@ -12,7 +12,7 @@ import WarningModal from "../../modals/WarningModal/WarningModal";
 import Options from "../../atoms/Options/Options";
 import placeHolderImg from "../../../img/product-placeholder.png";
 
-import { getProducts } from "../../../actions";
+import { getProducts, sortProducts } from "../../../actions";
 import { locales } from "../../../utils/locales";
 import { sortByPrice } from "../../../utils/sortProducts";
 
@@ -26,43 +26,39 @@ let renderProducts = (products) => {
     const { id, nome, quantidade, valor } = product;
 
     return (
-      <StyledProductContainer key={"product-" + index + "-" + id}>
-        <div className="product-item">
-          <Card>
-            <CardImg
-              top
-              width="100%"
-              src={placeHolderImg}
-              alt="Card image cap"
+      <Card key={"product-" + index + "-" + id}>
+        <CardImg top src={placeHolderImg} alt={nome} />
+        <CardBody>
+          <CardTitle>
+            <h4>{nome}</h4>
+          </CardTitle>
+          <CardText>
+            <strong>{locales.priceTitle}</strong>
+            <NumberFormat
+              displayType={"text"}
+              value={valor}
+              thousandSeparator={true}
+              prefix={"R$ "}
+              renderText={(formattedPrice) => <span>{formattedPrice}</span>}
             />
-            <CardBody>
-              <CardTitle>
-                <h4>{nome}</h4>
-              </CardTitle>
-              <CardText>
-                <strong>{locales.priceTitle}</strong>
-                <NumberFormat
-                  displayType={"text"}
-                  value={valor}
-                  thousandSeparator={true}
-                  prefix={"R$ "}
-                  renderText={(formattedPrice) => <span>{formattedPrice}</span>}
-                />
-              </CardText>
-              <CardText>
-                <strong>{locales.quantityTitle}</strong>
-                {quantidade}
-              </CardText>
-              <Options product={product} />
-            </CardBody>
-          </Card>
-        </div>
-      </StyledProductContainer>
+          </CardText>
+          <CardText>
+            <strong>{locales.quantityTitle}</strong>
+            {quantidade}
+          </CardText>
+          <Options product={product} />
+        </CardBody>
+      </Card>
     );
   });
 };
 
-export const ProductList = ({ products, getProducts }) => {
+const handleSorting = (products, sortType, sortDirection) => {
+  console.log("####handle sorting", products, sortType, sortDirection);
+  sortProducts(products, sortType, sortDirection);
+};
+
+const ProductList = ({ products, getProducts }) => {
   const [addModal, setAddModal] = useState(false);
   const toggleAddModal = () => setAddModal(!addModal);
 
@@ -72,18 +68,34 @@ export const ProductList = ({ products, getProducts }) => {
 
   if (products) {
     return (
-      <StyledProductList>
-        {renderProducts(products)}
-        <StyledButton
-          className="add-button"
-          onClick={toggleAddModal}
-          title={locales.addProductButtonTitle}
-        >
-          {locales.addProductButtonTitle}
-        </StyledButton>
+      <>
+        <StyledProductList>
+          <div className="button-container">
+            <StyledButton
+              onClick={() => handleSorting(products, "price", "desc")}
+            >
+              Sort by Highest Price
+            </StyledButton>
+            <StyledButton
+              onClick={() => handleSorting(products, "price", "asc")}
+            >
+              Sort by Lowest Price
+            </StyledButton>
+            <StyledButton
+              className="add-button"
+              onClick={toggleAddModal}
+              title={locales.addProductButtonTitle}
+            >
+              {locales.addProductButtonTitle}
+            </StyledButton>
+          </div>
+          <StyledProductContainer>
+            {renderProducts(products)}
+          </StyledProductContainer>
+        </StyledProductList>
         <AddProductModal isOpen={addModal} toggle={toggleAddModal} />
         <WarningModal />
-      </StyledProductList>
+      </>
     );
   }
 

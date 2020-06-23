@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledOptions = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 
-    .button-wrapper {
-        display: flex;
-        flex-direction: row;
-    }
+  .button-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
 `;
