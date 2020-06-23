@@ -2,18 +2,20 @@
 
 exports[`<Header /> renders correctly 1`] = `
 <div
-  className="sc-AxjAm dhbSFx"
+  className="sc-AxjAm dNblVa"
 >
-  <img
-    alt="Dragalia Logo"
-    className="logo"
-    src="product-logo.png"
-  />
-  <h1>
-    Welcome to Dragalia!
-  </h1>
-  <h3>
-    Here you will find information about the most famous products in the world.
-  </h3>
+  <div
+    className="top-container"
+  >
+    <a
+      href="/"
+    >
+      <img
+        alt="Phony Store Logo"
+        className="logo"
+        src="product-logo.png"
+      />
+    </a>
+  </div>
 </div>
 `;

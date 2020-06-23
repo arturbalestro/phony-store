@@ -1,68 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Login /> renders correctly 1`] = `
-<div
-  className="sc-AxjAm hVyJjO"
->
-  <form
-    className=""
-    onSubmit={[Function]}
+exports[`<Home /> renders correctly 1`] = `
+<div>
+  <button
+    className="sc-AxjAm eaVKzU"
+    onClick={[Function]}
   >
-    <div
-      className="form-group"
-    >
-      <label
-        className=""
-        htmlFor="userName"
-      >
-        Username
-      </label>
-      <input
-        className="form-control"
-        id="userName"
-        name="userName"
-        onBlur={[Function]}
-        onChange={[Function]}
-        type="text"
-        value=""
-      />
-      <div
-        className="invalid-feedback"
-      />
-    </div>
-    <div
-      className="form-group"
-    >
-      <label
-        className=""
-        htmlFor="password"
-      >
-        Password
-      </label>
-      <input
-        className="form-control"
-        id="password"
-        name="password"
-        onBlur={[Function]}
-        onChange={[Function]}
-        type="password"
-        value=""
-      />
-      <div
-        className="invalid-feedback"
-      />
-    </div>
-    <div
-      className="text-right form-group"
-    >
-      <button
-        className="sc-AxirZ ervvaP"
-        disabled={false}
-        type="submit"
-      >
-        LOGIN
-      </button>
-    </div>
-  </form>
+    Check our products
+  </button>
 </div>
 `;

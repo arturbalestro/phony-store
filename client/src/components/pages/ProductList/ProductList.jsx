@@ -8,6 +8,7 @@ import { StyledProductContainer } from "../../../styles/StyledProductContainer";
 import { StyledButton } from "../../../styles/StyledButton";
 
 import AddProductModal from "../../modals/AddProductModal/AddProductModal";
+import WarningModal from "../../modals/WarningModal/WarningModal";
 import Options from "../../atoms/Options/Options";
 import placeHolderImg from "../../../img/product-placeholder.png";
 
@@ -81,6 +82,7 @@ export const ProductList = ({ products, getProducts }) => {
           {locales.addProductButtonTitle}
         </StyledButton>
         <AddProductModal isOpen={addModal} toggle={toggleAddModal} />
+        <WarningModal />
       </StyledProductList>
     );
   }

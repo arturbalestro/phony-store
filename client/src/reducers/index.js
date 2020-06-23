@@ -1,5 +1,4 @@
 import actionTypes from "../actions/types";
-import update from "immutability-helper";
 
 const reducer = (state, action) => {
   //Preventing lint error of state not previously declared
@@ -19,10 +18,18 @@ const reducer = (state, action) => {
   if (action.type === actionTypes.ADD_PRODUCT) {
     return { ...state, loading: true, newProduct: action.newProduct };
   } else if (action.type === actionTypes.PRODUCT_ADDED) {
-    //TODO Call a modal with this info
-    alert(action.addedProduct);
+    const warningModalState = {
+      modalOpen: true,
+      actionType: "Adding product",
+      modalMessage: action.addedProduct,
+    };
 
-    return { ...state, products: state.products, loading: false };
+    return {
+      ...state,
+      products: state.products,
+      loading: false,
+      warningModal: warningModalState,
+    };
   } else if (action.type === actionTypes.ADD_PRODUCT_FAILED) {
     return { ...state, loading: false };
   }
@@ -35,18 +42,18 @@ const reducer = (state, action) => {
       newProduct: action.newProduct,
     };
   } else if (action.type === actionTypes.PRODUCT_EDITED) {
-    //Updating state without modifying the original object
-    //Removing the old object to add the new one to the array
-    const updatedProducts = state.products.filter(
-      (product) => product.id !== action.productId
-    );
-    const setProducts = update(state.products, { $set: updatedProducts });
-    const updatedState = update(setProducts, { $push: [action.editedProduct] });
+    const warningModalState = {
+      modalOpen: true,
+      actionType: "Editing product",
+      modalMessage: action.editedProduct,
+    };
 
-    //TODO Call a modal with this info
-    alert(action.editedProduct);
-
-    return { ...state, products: updatedState, loading: false };
+    return {
+      ...state,
+      products: state.products,
+      loading: false,
+      warningModal: warningModalState,
+    };
   } else if (action.type === actionTypes.EDIT_PRODUCT_FAILED) {
     return { ...state, loading: false };
   }
@@ -54,14 +61,19 @@ const reducer = (state, action) => {
   if (action.type === actionTypes.DELETE_PRODUCT) {
     return { ...state, loading: true, product: action.product };
   } else if (action.type === actionTypes.PRODUCT_DELETED) {
-    //TODO Call a modal with this info
-    alert(action.deletedProduct);
+    const warningModalState = {
+      modalOpen: true,
+      actionType: "Deleting product",
+      modalMessage: action.deletedProduct,
+    };
+
     return {
       ...state,
       products: state.products.filter(
         (product) => product.id !== action.deletedProduct.id
       ),
       loading: false,
+      warningModal: warningModalState,
     };
   } else if (action.type === actionTypes.DELETE_PRODUCT_FAILED) {
     return { ...state, loading: false };

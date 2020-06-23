@@ -2,7 +2,7 @@
 
 exports[`<Login /> renders correctly 1`] = `
 <div
-  className="sc-AxjAm hVyJjO"
+  className="sc-AxjAm gktknT"
 >
   <form
     className=""
@@ -26,9 +26,6 @@ exports[`<Login /> renders correctly 1`] = `
         type="text"
         value=""
       />
-      <div
-        className="invalid-feedback"
-      />
     </div>
     <div
       className="form-group"
@@ -48,19 +45,16 @@ exports[`<Login /> renders correctly 1`] = `
         type="password"
         value=""
       />
-      <div
-        className="invalid-feedback"
-      />
     </div>
     <div
       className="text-right form-group"
     >
       <button
-        className="sc-AxirZ ervvaP"
+        className="sc-AxirZ jIZfpj"
         disabled={false}
         type="submit"
       >
-        LOGIN
+        Login
       </button>
     </div>
   </form>
