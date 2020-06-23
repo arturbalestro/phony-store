@@ -6,7 +6,6 @@ export const StyledProductContainer = styled.div`
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  border-bottom: 3px solid #ea464d;
   margin-bottom: 20px;
 
   &:last-child {
